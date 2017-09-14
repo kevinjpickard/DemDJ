@@ -3,6 +3,8 @@ sudo: false
 go:
   - tip
 before_install:
+  - go get -u github.com/Masterminds/glide
   - go get github.com/mattn/goveralls
 script:
+  - glide install
   - $HOME/gopath/bin/goveralls -service=travis-ci
