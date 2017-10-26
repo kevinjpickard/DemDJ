@@ -11,5 +11,5 @@ script:
   - glide install
   - go vet
   - go env
-  - ginkgo -cover
+  - /home/travis/gopath/bin/ginkgo -cover
   - goveralls -service=travis-ci
