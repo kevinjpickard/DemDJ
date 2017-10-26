@@ -5,6 +5,10 @@ go:
 before_install:
   - go get -u github.com/Masterminds/glide
   - go get github.com/mattn/goveralls
+  - go get golang.org/x/tools/cmd/cover
+  - go get github.com/ginkgo/ginkgo
 script:
   - glide install
-  - $HOME/gopath/bin/goveralls -service=travis-ci
+  - go vet
+  - ginkgo -cover
+  - goveralls -service=travis-ci
