@@ -19,4 +19,8 @@ Test are run using the [Ginko Testing Framework](https://github.com/onsi/ginkgo)
 ```
 ginko
 ```
+or 
+```
+go test
+```
 When writing tests, please use the [Gomega Matcher Library](https://github.com/onsi/gomega) ([Gomega documentation](http://onsi.github.io/gomega/#provided-matchers))
