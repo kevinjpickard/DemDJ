@@ -12,5 +12,5 @@ script:
   - go vet
   - export PATH=$GOPATH/bin:$PATH
   - go env
-  - ginkgo -cover
+  - go test -cover
   - goveralls -service=travis-ci
