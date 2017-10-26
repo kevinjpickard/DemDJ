@@ -6,9 +6,9 @@ before_install:
   - go get -u github.com/Masterminds/glide
   - go get github.com/mattn/goveralls
   - go get golang.org/x/tools/cmd/cover
-  - go install github.com/onsi/ginkgo/ginkgo
+  - go get github.com/onsi/ginkgo
 script:
   - glide install
   - go vet
-  - ginkgo -cover
+  - $HOME/gopath/bin/ginkgo -cover
   - goveralls -service=travis-ci
