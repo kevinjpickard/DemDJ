@@ -10,5 +10,6 @@ before_install:
 script:
   - glide install
   - go vet
-  - $HOME/gopath/bin/ginkgo -cover
+  - export PATH=$GOPATH:$PATH
+  - ginkgo -cover
   - goveralls -service=travis-ci
