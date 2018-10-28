@@ -1,0 +1,26 @@
+# appveyor.yml
+build: off
+
+clone_folder: c:\gopath\src\github.com\$username\$project
+
+environment:
+  GOPATH: c:\gopath
+
+stack: go 1.10
+
+install:
+  - ps: go get -u github.com/Masterminds/glide
+  - ps: go get github.com/mattn/goveralls
+  - ps: go get golang.org/x/tools/cmd/cover
+  - ps: go get -u github.com/onsi/ginkgo/ginkgo
+
+before_test:
+  - ps: go env
+  - ps: glide install
+  - ps: go vet ./...
+
+test_script:
+  - ps: go test -cover ./...
+
+build_script:
+  - go build
