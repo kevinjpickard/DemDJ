@@ -11,21 +11,19 @@ before_install:
   - go get -u github.com/Masterminds/glide
   - go get github.com/mattn/goveralls
   - go get golang.org/x/tools/cmd/cover
-  - go get github.com/onsi/ginkgo
+  - go get -u github.com/onsi/ginkgo/ginkgo
 jobs:
-  - stage: "Setup"
-    name: "Setup Tests"
-    script:
-      - glide install
-      - export PATH=$GOPATH/bin:$PATH
-      - go env
-  - stage: "Test"
-    name: "Test Application"
-    script:
-      - go vet
-      - go test -cover
-      - goveralls -service=travis-ci
-  - stage: "Build"
-    name: "Build Application"
-    script:
-      - go build
+  include:
+    - stage: setup
+      script:
+        - glide install
+        - export PATH=$GOPATH/bin:$PATH
+        - go env
+    - stage: test
+      script:
+        - go vet
+        - go test -cover
+        - goveralls -service=travis-ci
+    - stage: build
+      script:
+        - go build
