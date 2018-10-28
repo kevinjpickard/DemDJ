@@ -16,6 +16,7 @@ install:
 
 before_test:
   - ps: go env
+  - ps: cd "env:GOPATH\src\github.com\kevinjpickard\DemDJ"
   - ps: glide install
   - ps: go vet
 
