@@ -2,15 +2,30 @@ language: go
 sudo: false
 go:
   - tip
+matrix:
+  include:
+    - os: osx
+    - os: linux
+
 before_install:
   - go get -u github.com/Masterminds/glide
   - go get github.com/mattn/goveralls
   - go get golang.org/x/tools/cmd/cover
   - go get github.com/onsi/ginkgo
-script:
-  - glide install
-  - go vet
-  - export PATH=$GOPATH/bin:$PATH
-  - go env
-  - go test -cover
-  - goveralls -service=travis-ci
+jobs:
+  - stage: "Setup"
+    name: "Setup Tests"
+    script:
+      - glide install
+      - export PATH=$GOPATH/bin:$PATH
+      - go env
+  - stage: "Test"
+    name: "Test Application"
+    script:
+      - go vet
+      - go test -cover
+      - goveralls -service=travis-ci
+  - stage: "Build"
+    name: "Build Application"
+    script:
+      - go build
