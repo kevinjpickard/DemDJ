@@ -17,10 +17,10 @@ install:
 before_test:
   - ps: go env
   - ps: glide install
-  - ps: go vet ./...
+  - ps: go vet
 
 test_script:
-  - ps: go test -cover ./...
+  - ps: go test -cover 
 
 build_script:
   - go build
