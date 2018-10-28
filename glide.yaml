@@ -1,5 +1,6 @@
-package: .
-import: []
+package: github.com/kevinjpickard/DemDJ
+import:
+- package: github.com/zmb3/spotify
 testImport:
 - package: github.com/onsi/ginkgo
   version: ^1.4.0

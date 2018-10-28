@@ -38,3 +38,10 @@ captures/
 
 # Keystore files
 *.jks
+
+# env files
+*.env
+
+# golang vendor
+vendor/
+

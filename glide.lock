@@ -1,9 +1,18 @@
-hash: 10ba85723c3ee1031be30d4c2cf3b71198aa1520486619cbc6cc83169b0e37b1
-updated: 2017-09-13T23:06:26.98485655-06:00
-imports: []
+hash: 653849400f71664f44c3e8c0527dc61845ad736eb5fc5a0f4d637c03377fef3e
+updated: 2018-10-28T15:03:20.602700228-06:00
+imports:
+- name: github.com/zmb3/spotify
+  version: a4bd83f60e06ab58f3516c61680d0532aabf470e
 testImports:
+- name: github.com/hpcloud/tail
+  version: a1dbeea552b7c8df4b542c66073e393de198a800
+  subpackages:
+  - ratelimiter
+  - util
+  - watch
+  - winfile
 - name: github.com/onsi/ginkgo
-  version: 9eda700730cba42af70d53180f9dcce9266bc2bc
+  version: 3774a09d95489ccaa16032e0770d08ea77ba6184
   subpackages:
   - config
   - internal/codelocation
@@ -23,7 +32,7 @@ testImports:
   - reporters/stenographer/support/go-isatty
   - types
 - name: github.com/onsi/gomega
-  version: c893efa28eb45626cdaa76c9f653b62488858837
+  version: 7615b9433f86a8bdf29709bf288bc4fd0636a369
   subpackages:
   - format
   - internal/assertion
@@ -37,17 +46,17 @@ testImports:
   - matchers/support/goraph/util
   - types
 - name: golang.org/x/net
-  version: 859d1a86bb617c0c20d154590c3c5d3fcb670b07
+  version: 9b4f9f5ad5197c79fd623a3638e70d8b26cef344
   subpackages:
   - html
   - html/atom
   - html/charset
 - name: golang.org/x/sys
-  version: 062cd7e4e68206d8bab9b18396626e855c992658
+  version: 95b1ffbd15a57cc5abb3f04402b9e8ec0016a52c
   subpackages:
   - unix
 - name: golang.org/x/text
-  version: acd49d43e9b95df46670431bf5c7ae59586daad8
+  version: 4d1c5fb19474adfe9562c9847ba425e7da817e81
   subpackages:
   - encoding
   - encoding/charmap
@@ -59,10 +68,16 @@ testImports:
   - encoding/simplifiedchinese
   - encoding/traditionalchinese
   - encoding/unicode
+  - internal/language
+  - internal/language/compact
   - internal/tag
   - internal/utf8internal
   - language
   - runes
   - transform
+- name: gopkg.in/fsnotify/fsnotify.v1
+  version: c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9
+- name: gopkg.in/tomb.v1
+  version: c131134a1947e9afd9cecfe11f4c6dff0732ae58
 - name: gopkg.in/yaml.v2
-  version: eb3733d160e74a9c7e442f435eb3bea458e1d19f
+  version: 5420a8b6744d3b0345ab293f6fcba19c978f1183
