@@ -19,7 +19,7 @@ var (
 
 	ch = make(chan *spotify.Client)
 
-	state = "abc123"
+	state = "abc123" // thefuq is this?? ToDo: Find out
 )
 
 // the user will eventually be redirected back to your redirect URL
@@ -46,7 +46,6 @@ func main() {
 	go http.ListenAndServe(":8080", nil)
 
 	url := auth.AuthURL(state)
-	//fmt.Println("Please log in to Spotify by visiting the following page in your browser:", url)
 	var err error
 	switch runtime.GOOS {
 	case "linux":

@@ -17,6 +17,8 @@ glide install
 ## Testing
 Test are run using the [Ginko Testing Framework](https://github.com/onsi/ginkgo). To run all tests, run:
 ```
+go get -u github.com/onsi/ginkgo/ginkgo  # installs the ginkgo CLI
+go get -u github.com/onsi/gomega/...     # fetches the matcher library
 ginko
 ```
 or 
