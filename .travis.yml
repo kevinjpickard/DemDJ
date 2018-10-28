@@ -2,10 +2,9 @@ language: go
 sudo: false
 go:
   - tip
-matrix:
-  include:
-    - os: osx
-    - os: linux
+os:
+  - osx
+  - linux
 
 before_install:
   - go get -u github.com/Masterminds/glide
