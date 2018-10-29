@@ -4,7 +4,7 @@ go: tip
 
 jobs:
   include:
-    - stage: setup
+    - stage: setup and test
       os: linux
       script:
         - go get -u github.com/Masterminds/glide
@@ -14,25 +14,19 @@ jobs:
         - glide install
         - export PATH=$GOPATH/bin:$PATH
         - go env
-    - stage: setup
-      os: osx
-      script:
-        - go get -u github.com/Masterminds/glide
-        - go get github.com/mattn/goveralls
-        - go get golang.org/x/tools/cmd/cover
-        - go get -u github.com/onsi/ginkgo/ginkgo
-        - glide install
-        - export PATH=$GOPATH/bin:$PATH
-        - go env
-    - stage: test
-      os: linux
-      script:
         - go vet
         - go test -cover
         - goveralls -service=travis-ci
-    - stage: test
+    - stage: setup and test
       os: osx
       script:
+        - go get -u github.com/Masterminds/glide
+        - go get github.com/mattn/goveralls
+        - go get golang.org/x/tools/cmd/cover
+        - go get -u github.com/onsi/ginkgo/ginkgo
+        - glide install
+        - export PATH=$GOPATH/bin:$PATH
+        - go env
         - go vet
         - go test -cover
         - goveralls -service=travis-ci
