@@ -4,36 +4,12 @@ build: off
 clone_folder: c:\gopath\src\github.com\$username\$project
 
 environment:
-  GOPATH: C:\gopath
-  APPVEYOR_BUILD_FOLDER: $env:GOPATH\src\github.com\$username\$project
+  GOPATH: c:\gopath
 
 stack: go 1.10
 
-init:
-  - ps: Get-Location
-  - ps: Get-ChildItem "env:"
-
-install:
-  - ps: go get -u github.com/Masterminds/glide
-  - ps: go get github.com/mattn/goveralls
-  - ps: go get golang.org/x/tools/cmd/cover
-  - ps: go get -u github.com/onsi/ginkgo/ginkgo
-
-before_build:
-  - ps: go env
-  - ps: $env:PATH="$env:PATH;$env:GOPATH\bin"
-  - ps: Write-Output $env:PATH 
-  - ps: cd "C:\projects\demdj"
-  - ps: glide -q install
-  - ps: go vet
-
-build_script:
-  - go build
+before_test:
+  - go vet ./...
 
 test_script:
-  - ps: go test -cover 
-
-notifications:
-  - provider: Slack
-    incoming_webhook:
-      secure: 8ADMF8Dx7v7ixcph9LqwttcbUOGuwb5SSSGKyoBl5Utny1nLSXeeI/YVIWnUOh0c43Dok7yepW5EZnP8IQX41uUSZOBhvEdfqtCyiU4fIls=
+  - go test ./...
