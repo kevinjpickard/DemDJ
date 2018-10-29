@@ -9,10 +9,6 @@ environment:
 
 stack: go 1.10
 
-init:
-  - ps: Get-Location
-  - ps: Get-ChildItem "env:"
-
 install:
   - ps: go get -u github.com/Masterminds/glide
   - ps: go get github.com/mattn/goveralls
@@ -20,9 +16,7 @@ install:
   - ps: go get -u github.com/onsi/ginkgo/ginkgo
 
 before_build:
-  - ps: go env
   - ps: $env:PATH="$env:PATH;$env:GOPATH\bin"
-  - ps: Write-Output $env:PATH 
   - ps: glide -q install
   - ps: go vet
 
