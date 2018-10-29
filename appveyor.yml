@@ -7,7 +7,7 @@ environment:
   GOPATH: C:\gopath
   APPVEYOR_BUILD_FOLDER: C:\gopath\src\github.com\kevinjpickard\DemDJ
 
-stack: go 1.10
+#stack: go 1.10
 
 init:
   - ps: Get-Location
