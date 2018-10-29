@@ -5,7 +5,7 @@ clone_folder: c:\gopath\src\github.com\$username\$project
 
 environment:
   GOPATH: C:\gopath
-  APPVEYOR_BUILD_FOLDER: $env:GOPATH\src\github.com\$username\$project
+  APPVEYOR_BUILD_FOLDER: C:\gopath\src\github.com\kevinjpickard\DemDJ
 
 stack: go 1.10
 
