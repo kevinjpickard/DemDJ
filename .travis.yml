@@ -28,4 +28,4 @@ build:
   - go build
   
 notifications:
-    slack: demdj:2MzmfAjv1MTxsFRjYTDScLpR
+  slack: demdj:2MzmfAjv1MTxsFRjYTDScLpR
