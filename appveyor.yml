@@ -16,7 +16,7 @@ install:
 
 before_build:
   - ps: go env
-  - ps: set PATH="%PATH%;%GOPATH%/bin"
+  - ps: Set-Variable $env:PATH -Value $env:PATH:$GOPATH/bin
   - ps: Write-Output $env:PATH 
   - ps: cd "C:\projects\demdj"
   - ps: glide install
