@@ -1,5 +1,5 @@
-hash: 5cc92d85da07d71e7e9ec050eabbad5cee57386111f36a9e518e81698cfcc36e
-updated: 2018-10-28T16:22:16.076856276-06:00
+hash: 653849400f71664f44c3e8c0527dc61845ad736eb5fc5a0f4d637c03377fef3e
+updated: 2018-10-28T22:11:25.235705999-06:00
 imports:
 - name: github.com/golang/protobuf
   version: d3de96c4c28ef8af3aa1a892fc481e0f103c01ff
