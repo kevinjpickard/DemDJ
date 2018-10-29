@@ -9,6 +9,8 @@ environment:
 
 stack: go 1.10
 
+init:
+  - ps: cd C:\gopath\src\github.com\kevinjpickard\DemDJ
 install:
   - ps: go get -u github.com/Masterminds/glide
   - ps: go get github.com/mattn/goveralls
