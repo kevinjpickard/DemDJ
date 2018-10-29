@@ -11,6 +11,9 @@ jobs:
         - go get github.com/mattn/goveralls
         - go get golang.org/x/tools/cmd/cover
         - go get -u github.com/onsi/ginkgo/ginkgo
+        - glide install
+        - export PATH=$GOPATH/bin:$PATH
+        - go env
     - stage: setup
       os: osx
       script:
@@ -18,15 +21,6 @@ jobs:
         - go get github.com/mattn/goveralls
         - go get golang.org/x/tools/cmd/cover
         - go get -u github.com/onsi/ginkgo/ginkgo
-    - stage: install
-      os: linux
-      script:
-        - glide install
-        - export PATH=$GOPATH/bin:$PATH
-        - go env
-    - stage: install
-      os: osx
-      script:
         - glide install
         - export PATH=$GOPATH/bin:$PATH
         - go env
@@ -42,14 +36,12 @@ jobs:
         - go vet
         - go test -cover
         - goveralls -service=travis-ci
-    - stage: build
+    - stage: build and deploy
       os: linux
       script:
         - GOOS=linux go build -o demdj.linux
         - GOOS=darwin go build -o demdj.darwin
         - GOOS=windows go build -o demdj.windows
-    - stage: deploy
-      os: linux
       deploy:
         provider: releases
         api_key:

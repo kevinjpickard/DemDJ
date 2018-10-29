@@ -1,5 +1,5 @@
-[![Coverage Status](https://coveralls.io/repos/github/kevinjpickard/DemDJ/badge.svg?branch=master)](https://coveralls.io/github/kevinjpickard/DemDJ?branch=master)
-[![Build Status](https://travis-ci.org/kevinjpickard/DemDJ.svg?branch=master)](https://travis-ci.org/kevinjpickard/DemDJ)
+[![Coverage Status](https://coveralls.io/repos/github/kevinjpickard/DemDJ/badge.svg?branch=master)](https://coveralls.io/github/kevinjpickard/demdj?branch=master)
+[![Build Status](https://travis-ci.org/kevinjpickard/demdj.svg?branch=master)](https://travis-ci.org/kevinjpickard/demdj)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/5grajhscy718wc02?svg=true)](https://ci.appveyor.com/project/kevinjpickard/demdj)
 # DemDJ
 DemDJ: Music By the People, For the People
