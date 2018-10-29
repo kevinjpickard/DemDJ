@@ -5,12 +5,13 @@ clone_folder: c:\gopath\src\github.com\$username\$project
 
 environment:
   GOPATH: C:\gopath
-  APPVEYOR_BUILD_FOLDER: C:\gopath\src\github.com\kevinjpickard\DemDJ
+  APPVEYOR_BUILD_FOLDER: $env:GOPATH\src\github.com\$username\$project
 
-#stack: go 1.10
+stack: go 1.10
 
 init:
   - ps: Get-Location
+  - ps: Get-ChildItem env:
 
 install:
   - ps: go get -u github.com/Masterminds/glide
