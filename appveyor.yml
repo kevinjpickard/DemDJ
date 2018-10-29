@@ -8,6 +8,10 @@ environment:
 
 stack: go 1.10
 
+init:
+  - ps: Get-Location
+  - ps: Get-ChildItem "env:"
+
 before_test:
   - go vet ./...
 
