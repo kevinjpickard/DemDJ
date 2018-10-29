@@ -1,4 +1,4 @@
-package: .
+package: github.com/kevinjpickard/DemDJ
 import:
 - package: github.com/zmb3/spotify
 testImport:
