@@ -2,6 +2,10 @@ language: go
 sudo: false
 go: tip
 
+cache:
+  directories:
+    - vendor
+
 jobs:
   include:
     - stage: setup and test
