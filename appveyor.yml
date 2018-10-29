@@ -19,7 +19,7 @@ before_build:
   - ps: $env:PATH="$env:PATH;$env:GOPATH\bin"
   - ps: Write-Output $env:PATH 
   - ps: cd "C:\projects\demdj"
-  - ps: glide install
+  - ps: glide -q install
   - ps: go vet
 
 build_script:
