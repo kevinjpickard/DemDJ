@@ -29,6 +29,6 @@ test_script:
   - ps: go test -cover 
 
 notifications:
-  - provider: slack
+  - provider: Slack
     incoming_webhook:
       secure: 8ADMF8Dx7v7ixcph9LqwttcbUOGuwb5SSSGKyoBl5Utny1nLSXeeI/YVIWnUOh0c43Dok7yepW5EZnP8IQX41uUSZOBhvEdfqtCyiU4fIls=
