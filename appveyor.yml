@@ -1,7 +1,7 @@
 # appveyor.yml
 build: off
 
-clone_folder: c:\gopath\src\github.com\$username\$project
+clone_folder: c:\gopath\src\github.com\kevinjpickard\demdj
 
 environment:
   GOPATH: c:\gopath
@@ -10,7 +10,6 @@ stack: go 1.10
 
 init:
   - ps: Get-Location
-  - ps: Get-ChildItem "env:"
 
 before_test:
   - go vet ./...
