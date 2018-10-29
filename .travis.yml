@@ -1,26 +1,49 @@
 language: go
 sudo: false
-matrix:
+go: tip
+
+jobs:
   include:
-  - os: osx
-    go: tip
-  - os: linux
-    go: tip
-before_install:
-- go get -u github.com/Masterminds/glide
-- go get github.com/mattn/goveralls
-- go get golang.org/x/tools/cmd/cover
-- go get -u github.com/onsi/ginkgo/ginkgo
-install:
-- glide install
-- export PATH=$GOPATH/bin:$PATH
-- go env
-test:
-- go vet
-- go test -cover
-- goveralls -service=travis-ci
-build:
-- go build
-notifications:
-  slack:
-    secure: tERwhaz16AzRUyS6ETilSlmMkdnbsTp/1XICEKx52nxUSGBTiB7QPg/0ulhn9pirqemkzWDTkvFko9YIyAQlPwHA8r7INUX8E2Ax2eA+KVJf0jtxFe5ShX7n2eejTWejDuFC7HFTvyx8jz8usaDEU71LVzLri4yFbdvh7gMBtqWOwz+CKefjX2KmBBjRch/UX1sZbM9FeCLeHOtciqJ4o8GIWciZsBoi+ZoWb3zyM+b7wtDibWVSmc5zP5j2zMnkGc5m5d4u1ZP7AIZBhtjWCqLYKce6bTkLP8W2Pku8J1yBe5UMQ6mphsdtlRhVzfBBPWYu2b4shqY4e7cY+ntmR4f8dTsoK7h8NpMXgdJl9hRyooWofCwzPy5P7Ba4O/ozgu2FRdnJJm03Drm43tM1OPx9kJG4Y+2u+Lef42nSLHPXsHXCehMbEBQKBbfzRTZYWaIzqfva1PG3yYzRaJSfNUHavU8EE0T5EWlbhCTHWQfgU3MYEKV+ybYuskEH8E/NIG7ZC4PfpTg+xRGtnGN2YgmpfjAYDs1hTGwIE2K9vkpcyHjp1XCoiZ1p7LMKporXz5ub8v8d/aW091keokc6GnEm+Psy6Kg9oC/KTWSPiTpe/2GvbqFMBfTeD04EZwhpQICk5lIAbaV9FEURwlF5snatdUt0jKxO90nxTjAo7ao=
+    - stage: setup
+      os:
+        - linux
+        - osx
+      script:
+        - go get -u github.com/Masterminds/glide
+        - go get github.com/mattn/goveralls
+        - go get golang.org/x/tools/cmd/cover
+        - go get -u github.com/onsi/ginkgo/ginkgo
+    - stage: install
+      os:
+        - linux
+        - osx
+      script:
+        - glide install
+        - export PATH=$GOPATH/bin:$PATH
+        - go env
+    - stage: test
+      os:
+        - linux
+        - osx
+      script:
+        - go vet
+        - go test -cover
+        - goveralls -service=travis-ci
+    - stage: build
+      os: linux
+      script:
+        - GOOS=linux go build -o demdj.linux
+        - GOOS=darwin go build -o demdj.darwin
+        - GOOS=windows go build -o demdj.windows
+    - stage: deploy
+      os: linux
+      deploy:
+        provider: releases
+        api_key:
+          secure: vBrfhclvfw4q5i2V4J9di+hAHdTn30z+xUzGG8gNDn5L1Xt8xxlVV1+loRMw/dOU8pTRyAPHRiG6GlbsJajrm9S9Acf7+mAGYtFzHndxsgl9ma4eVUwOxlEpjXsAehsjYPy8VP15jm+re5uZj0hxKWfZ4/ImVGNNbMSdSGa9geG/x2JoDmoyH6B/m7pfNsVa800YD1H+5PY2jUH1sj1KwMLBZQk+08AwAgzfOyKwY+NUo6KoxF2vcgJI4IORm7ndoaMztdjs77uIOaRqQZVTlVesF++dGPZocqZ2tUM6ZQszWajOiWAdNj0Xcpo8ROUHccV9MkafkVaOuDD1K1dQ58z0vqpJIB07+jVJ/j+cKhiPkc8gRn5/DOwTsy6Mb4VTj6LpvvIdpdF3nmxJuXvYqqaqXQ+NkU69ZojHnKiUB7YKN5HcDi77DT95gbIpK2//B6SMgW1rFvjgNEiTFwc1KFYLI9Fy41bFTj/LeYqKzsXSi83CGFj6oWW/Qc3CAsKNX7liIT7yMvVcMc62zbhtAHt/zC2UCkZP3HTRrcBYuNoDAuaB7P/4CXLUVsn+5/cnxQcjr0qyysXvMfAStaC2NdVvcLsl18J1VB6xuJlV6yFEmO9pZLQJQ3H4z1UPKzHnqWRt4EAyEO/ySH6NlmbNu00icSs8Rl9dQLPMCS4hc2g=
+        files:
+          - demdj.darwin
+          - demdj.linux
+          - demdj.windows
+        on:
+          tags: true
