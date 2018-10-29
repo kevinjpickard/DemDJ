@@ -50,3 +50,4 @@ jobs:
           - demdj.windows
         on:
           tags: true
+        skip_cleanup: true
