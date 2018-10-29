@@ -1,5 +1,6 @@
 language: go
 sudo: false
+
 matrix:
   include:
     - os: osx
@@ -12,13 +13,19 @@ before_install:
   - go get github.com/mattn/goveralls
   - go get golang.org/x/tools/cmd/cover
   - go get -u github.com/onsi/ginkgo/ginkgo
+
 install:
   - glide install
   - export PATH=$GOPATH/bin:$PATH
   - go env
+
 test:
   - go vet
   - go test -cover
   - goveralls -service=travis-ci
+
 build:
   - go build
+  
+notifications:
+    slack: demdj:2MzmfAjv1MTxsFRjYTDScLpR
