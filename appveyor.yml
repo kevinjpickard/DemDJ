@@ -11,7 +11,7 @@ stack: go 1.10
 
 init:
   - ps: Get-Location
-  - ps: Get-ChildItem env
+  - ps: Get-ChildItem "env:"
 
 install:
   - ps: go get -u github.com/Masterminds/glide
