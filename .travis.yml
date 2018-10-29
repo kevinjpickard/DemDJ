@@ -1,31 +1,26 @@
 language: go
 sudo: false
-
 matrix:
   include:
-    - os: osx
-      go: tip
-    - os: linux
-      go: tip
-
+  - os: osx
+    go: tip
+  - os: linux
+    go: tip
 before_install:
-  - go get -u github.com/Masterminds/glide
-  - go get github.com/mattn/goveralls
-  - go get golang.org/x/tools/cmd/cover
-  - go get -u github.com/onsi/ginkgo/ginkgo
-
+- go get -u github.com/Masterminds/glide
+- go get github.com/mattn/goveralls
+- go get golang.org/x/tools/cmd/cover
+- go get -u github.com/onsi/ginkgo/ginkgo
 install:
-  - glide install
-  - export PATH=$GOPATH/bin:$PATH
-  - go env
-
+- glide install
+- export PATH=$GOPATH/bin:$PATH
+- go env
 test:
-  - go vet
-  - go test -cover
-  - goveralls -service=travis-ci
-
+- go vet
+- go test -cover
+- goveralls -service=travis-ci
 build:
-  - go build
-  
+- go build
 notifications:
-  slack: demdj:2MzmfAjv1MTxsFRjYTDScLpR
+  slack:
+    secure: tERwhaz16AzRUyS6ETilSlmMkdnbsTp/1XICEKx52nxUSGBTiB7QPg/0ulhn9pirqemkzWDTkvFko9YIyAQlPwHA8r7INUX8E2Ax2eA+KVJf0jtxFe5ShX7n2eejTWejDuFC7HFTvyx8jz8usaDEU71LVzLri4yFbdvh7gMBtqWOwz+CKefjX2KmBBjRch/UX1sZbM9FeCLeHOtciqJ4o8GIWciZsBoi+ZoWb3zyM+b7wtDibWVSmc5zP5j2zMnkGc5m5d4u1ZP7AIZBhtjWCqLYKce6bTkLP8W2Pku8J1yBe5UMQ6mphsdtlRhVzfBBPWYu2b4shqY4e7cY+ntmR4f8dTsoK7h8NpMXgdJl9hRyooWofCwzPy5P7Ba4O/ozgu2FRdnJJm03Drm43tM1OPx9kJG4Y+2u+Lef42nSLHPXsHXCehMbEBQKBbfzRTZYWaIzqfva1PG3yYzRaJSfNUHavU8EE0T5EWlbhCTHWQfgU3MYEKV+ybYuskEH8E/NIG7ZC4PfpTg+xRGtnGN2YgmpfjAYDs1hTGwIE2K9vkpcyHjp1XCoiZ1p7LMKporXz5ub8v8d/aW091keokc6GnEm+Psy6Kg9oC/KTWSPiTpe/2GvbqFMBfTeD04EZwhpQICk5lIAbaV9FEURwlF5snatdUt0jKxO90nxTjAo7ao=
