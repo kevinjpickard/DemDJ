@@ -8,7 +8,7 @@ environment:
   APPVEYOR_BUILD_FOLDER: C:\gopath\src\github.com\kevinjpickard\demdj
   GO111MODULE: on
 
-stack: go 1.11.2
+stack: go 1.11.0
 
 before_build:
   - ps: go mod vendor
