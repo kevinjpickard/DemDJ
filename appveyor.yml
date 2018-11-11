@@ -1,8 +1,6 @@
 # appveyor.yml
 build: off
 
-clone_folder: c:\gopath\src\github.com\kevinjpickard\demdj
-
 environment:
   GOPATH: C:\gopath
   APPVEYOR_BUILD_FOLDER: C:\gopath\src\github.com\kevinjpickard\demdj
