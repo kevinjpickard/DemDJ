@@ -41,7 +41,3 @@ captures/
 
 # env files
 *.env
-
-# golang vendor
-vendor/
-

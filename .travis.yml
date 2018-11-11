@@ -1,6 +1,11 @@
 language: go
 sudo: false
-go: tip
+go: 
+  - 1.11.2
+
+environment:
+  global:
+    GO111MODULE: 'on'
 
 cache:
   directories:
@@ -11,28 +16,16 @@ jobs:
     - stage: setup and test
       os: linux
       script:
-        - go get -u github.com/Masterminds/glide
-        - go get github.com/mattn/goveralls
-        - go get golang.org/x/tools/cmd/cover
-        - go get -u github.com/onsi/ginkgo/ginkgo
-        - glide install
-        - export PATH=$GOPATH/bin:$PATH
         - go env
         - go vet
-        - go test -cover
+        - go test -v -mod=vendor -cover ./...
         - goveralls -service=travis-ci
     - stage: setup and test
       os: osx
       script:
-        - go get -u github.com/Masterminds/glide
-        - go get github.com/mattn/goveralls
-        - go get golang.org/x/tools/cmd/cover
-        - go get -u github.com/onsi/ginkgo/ginkgo
-        - glide install
-        - export PATH=$GOPATH/bin:$PATH
         - go env
         - go vet
-        - go test -cover
+        - go test -v -mod=vendor -cover ./...
         - goveralls -service=travis-ci
     - stage: build and deploy
       os: linux
@@ -40,6 +33,7 @@ jobs:
         - GOOS=linux go build -o demdj.linux
         - GOOS=darwin go build -o demdj.darwin
         - GOOS=windows go build -o demdj.windows
+        - ls -lha --color=auto
       deploy:
         provider: releases
         api_key:

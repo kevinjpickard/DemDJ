@@ -21,7 +21,7 @@ before_build:
   - ps: go vet
 
 build_script:
-  - go build
+  - ps: go build
 
 test_script:
   - ps: go test -cover 
