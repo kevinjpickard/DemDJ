@@ -6,6 +6,7 @@ clone_folder: c:\gopath\src\github.com\kevinjpickard\demdj
 environment:
   GOPATH: C:\gopath
   APPVEYOR_BUILD_FOLDER: C:\gopath\src\github.com\kevinjpickard\demdj
+  GO111MODULE: on
 
 stack: go 1.10
 
