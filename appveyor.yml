@@ -12,10 +12,6 @@ stack: go 1.11.0
 
 before_build:
   - ps: go mod vendor
-  - ps: go vet ./...
-
-build_script:
-  - ps: go build ./...
 
 test_script:
   - ps: go test -v -mod=vendor -cover ./...
