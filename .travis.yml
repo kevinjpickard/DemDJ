@@ -15,7 +15,7 @@ jobs:
     os: linux
     script:
       - export PATH=$GOPATH/bin:$PATH
-      - go mod vendor
+      - echo $PATH
   - stage: setup and test
     os: linux
     script:
