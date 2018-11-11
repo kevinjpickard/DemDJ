@@ -16,7 +16,8 @@ jobs:
     script:
       - export PATH=$GOPATH/bin:$PATH
       - echo $PATH
-      - ls -lha $GOBIN
+      - ls -lha $GOPATH/bin
+      - ls -lha $GOPATH/..
   - stage: setup and test
     os: linux
     script:
