@@ -8,24 +8,16 @@ environment:
   APPVEYOR_BUILD_FOLDER: C:\gopath\src\github.com\kevinjpickard\demdj
   GO111MODULE: on
 
-stack: go 1.10
-
-install:
-  - ps: go get -u github.com/Masterminds/glide
-  - ps: go get github.com/mattn/goveralls
-  - ps: go get golang.org/x/tools/cmd/cover
-  - ps: go get -u github.com/onsi/ginkgo/ginkgo
+stack: go 1.11.2
 
 before_build:
-  - ps: $env:PATH="$env:PATH;$env:GOPATH\bin"
-  - ps: glide -q install
-  - ps: go vet
+  - ps: go vet ./...
 
 build_script:
-  - ps: go build
+  - ps: go build ./...
 
 test_script:
-  - ps: go test -cover 
+  - ps: go test -v -cover ./...
 
 notifications:
   - provider: Slack
