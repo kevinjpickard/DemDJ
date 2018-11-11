@@ -8,21 +8,26 @@ env:
 cache:
   directories:
   - vendor
+
 jobs:
   include:
+  - stage: prepare dependencies
+    os: linux
+    script:
+      - go mod vendor
   - stage: setup and test
     os: linux
     script:
     - go env
     - go vet
-    - go test -v -mod=vendor -cover ./...
+    - go test -v -cover ./...
     - goveralls -service=travis-ci
   - stage: setup and test
     os: osx
     script:
     - go env
     - go vet
-    - go test -v -mod=vendor -cover ./...
+    - go test -v -cover ./...
     - goveralls -service=travis-ci
   - stage: build and deploy
     os: linux
@@ -42,6 +47,7 @@ jobs:
       on:
         tags: true
       skip_cleanup: true
+
 notifications:
   slack:
     secure: iAQqAldkGG3mFUD8TLDYxYhw5oDIdLGOW0u0JMbLC5tlZ0VI/I52s3TwugOI+3lBwh1HVRrAyGwRvoMkoJLgPp9gMcwuSt98o6OLpsp8Gix91kzf+ma6qPZYaoxPhAYq9yXRmHq0ai8gbj3Xd7tAU8gpa3NWeG1ugvTwAAk9hvyzxiWbe7OM1KKPJgsDvsXuYDZkUHhExEzCnjWu/6D+aE6uBEpFFNYwhmnMvh7UWgdmy0KxSXE66V2kzJM06MRAFm/bAsXOLL5GostruKsA5L0So0AB+9YNfP8W3wK7yYPHbEiLPxuDss8lIjkXcjSKnGv5lnWX4tZvWldWZoLsF43J3iGdLrmVSG5LAk1bOJHYchY6gvwgSVxDL3yF5SELVLVsRs61YlT7Xpz0VEGsHWIZ1WF1yM+Jqj95LHln0TqXkAjJ+hA/ICHd9hGrnLVwBvW+oep/kpSBU7z0ItX03IlliUKSIfna4txf9Ny0ZLCYpa817nXIottLuAnOGvT7oCXzDZxv7duHiZQNjmJIFNNSEp1NiheGhrt2Y+zYZXIJAalE0KV9WIopNt5VZYey+eN4MgsZ4h0P4hfCQ412NOMQFuXT7nZsUM6sphmJzWQEXJZKo7k6ISQ8hnCmKgQwzSe8h92RplO4nOSkQX8Dle3uvEggdXRkyktTtIVc72E=
