@@ -14,36 +14,40 @@ jobs:
   - stage: prepare dependencies
     os: linux
     script:
+      - export PATH=$GOPATH/bin:$PATH
       - go mod vendor
   - stage: setup and test
     os: linux
     script:
-    - go env
-    - go vet
-    - go test -v -cover ./...
-    - goveralls -service=travis-ci
+      - export PATH=$GOPATH/bin:$PATH
+      - go env
+      - go vet
+      - go test -v -cover ./...
+      - goveralls -service=travis-ci
   - stage: setup and test
     os: osx
     script:
-    - go env
-    - go vet
-    - go test -v -cover ./...
-    - goveralls -service=travis-ci
+      - export PATH=$GOPATH/bin:$PATH
+      - go env
+      - go vet
+      - go test -v -cover ./...
+      - goveralls -service=travis-ci
   - stage: build and deploy
     os: linux
     script:
-    - GOOS=linux go build -o demdj.linux
-    - GOOS=darwin go build -o demdj.darwin
-    - GOOS=windows go build -o demdj.windows
-    - ls -lha --color=auto
+      - export PATH=$GOPATH/bin:$PATH
+      - GOOS=linux go build -o demdj.linux
+      - GOOS=darwin go build -o demdj.darwin
+      - GOOS=windows go build -o demdj.windows
+      - ls -lha --color=auto
     deploy:
       provider: releases
       api_key:
         secure: vBrfhclvfw4q5i2V4J9di+hAHdTn30z+xUzGG8gNDn5L1Xt8xxlVV1+loRMw/dOU8pTRyAPHRiG6GlbsJajrm9S9Acf7+mAGYtFzHndxsgl9ma4eVUwOxlEpjXsAehsjYPy8VP15jm+re5uZj0hxKWfZ4/ImVGNNbMSdSGa9geG/x2JoDmoyH6B/m7pfNsVa800YD1H+5PY2jUH1sj1KwMLBZQk+08AwAgzfOyKwY+NUo6KoxF2vcgJI4IORm7ndoaMztdjs77uIOaRqQZVTlVesF++dGPZocqZ2tUM6ZQszWajOiWAdNj0Xcpo8ROUHccV9MkafkVaOuDD1K1dQ58z0vqpJIB07+jVJ/j+cKhiPkc8gRn5/DOwTsy6Mb4VTj6LpvvIdpdF3nmxJuXvYqqaqXQ+NkU69ZojHnKiUB7YKN5HcDi77DT95gbIpK2//B6SMgW1rFvjgNEiTFwc1KFYLI9Fy41bFTj/LeYqKzsXSi83CGFj6oWW/Qc3CAsKNX7liIT7yMvVcMc62zbhtAHt/zC2UCkZP3HTRrcBYuNoDAuaB7P/4CXLUVsn+5/cnxQcjr0qyysXvMfAStaC2NdVvcLsl18J1VB6xuJlV6yFEmO9pZLQJQ3H4z1UPKzHnqWRt4EAyEO/ySH6NlmbNu00icSs8Rl9dQLPMCS4hc2g=
       files:
-      - demdj.darwin
-      - demdj.linux
-      - demdj.windows
+        - demdj.darwin
+        - demdj.linux
+        - demdj.windows
       on:
         tags: true
       skip_cleanup: true
