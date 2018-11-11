@@ -3,7 +3,7 @@ sudo: false
 go: 
   - 1.11.2
 
-environment:
+env:
   global:
     GO111MODULE: 'on'
 
