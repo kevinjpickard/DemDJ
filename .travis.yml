@@ -14,14 +14,12 @@ jobs:
   - stage: prepare dependencies
     os: linux
     script:
-      - export PATH=$GOPATH/bin:$PATH
+      - export PATH=$GOPATH/vendor:$PATH
       - echo $PATH
-      - ls -lha $GOPATH/bin
-      - ls -lha $GOPATH/..
   - stage: setup and test
     os: linux
     script:
-      - export PATH=$GOPATH/bin:$PATH
+      - export PATH=$GOPATH/vendor:$PATH
       - go env
       - go vet
       - go test -v -cover ./...
@@ -29,7 +27,7 @@ jobs:
   - stage: setup and test
     os: osx
     script:
-      - export PATH=$GOPATH/bin:$PATH
+      - export PATH=$GOPATH/vendor:$PATH
       - go env
       - go vet
       - go test -v -cover ./...
