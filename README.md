@@ -5,13 +5,14 @@
 DemDJ: Music By the People, For the People
 
 ## Dependencies
-This repo uses [glide](https://github.com/Masterminds/glide) to manage dependencies. To install:
+This repo uses [go modules](https://github.com/golang/go/wiki/Modules#how-to-use-modules) to manage dependencies. This should be automatic. However, you must be running Go 1.11 or later. In addition, until the release of Go 1.12 you need to enable it:
 ```
-curl https://glide.sh/get | sh
+export GO111MODULE='on'
 ```
-Then, to install all dependencies:
+To add a dependency, do the following anywhere in the project repo:
 ```
-glide install
+go get <dependency>
+go mod vendor
 ```
 
 ## Testing
