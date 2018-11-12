@@ -14,7 +14,7 @@ To add a dependency, do the following anywhere in the project repo:
 go get <dependency>
 go mod verify
 ```
-`go get` will automatically add the dependency to the `go.mod` file. `go verify` updates the `go.mod` file, adding the new checksums. 
+`go get` will automatically add the dependency to the `go.mod` file. `go verify` updates the `go.sum` file, adding the new checksums. 
 
 ## Testing
 Test are run using the [Ginko Testing Framework](https://github.com/onsi/ginkgo). To run all tests, run:
