@@ -1,6 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/kevinjpickard/DemDJ/badge.svg?branch=master)](https://coveralls.io/github/kevinjpickard/demdj?branch=master)
 [![Build Status](https://travis-ci.org/kevinjpickard/demdj.svg?branch=master)](https://travis-ci.org/kevinjpickard/demdj)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/5grajhscy718wc02?svg=true)](https://ci.appveyor.com/project/kevinjpickard/demdj)
+
 # DemDJ
 DemDJ: Music By the People, For the People
 
@@ -14,6 +14,7 @@ To add a dependency, do the following anywhere in the project repo:
 go get <dependency>
 go mod vendor
 ```
+`go get` will add the dependency to the `go.mod` file, and `go mod vendor` will add it to the `vendor` folder. This is done for compatibility. 
 
 ## Testing
 Test are run using the [Ginko Testing Framework](https://github.com/onsi/ginkgo). To run all tests, run:
