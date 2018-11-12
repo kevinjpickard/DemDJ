@@ -36,6 +36,15 @@ jobs:
       - go vet
       - go test -v -cover ./...
       - goveralls -service=travis-ci
+  - stage: setup and test
+    os: windows
+    dist: 1803-containers
+    script:
+      - go get github.com/mattn/goveralls
+      - go env
+      - go vet
+      - go test -v -cover ./...
+      - goveralls -service=travis-ci
   - stage: build and deploy
     os: linux
     script:
