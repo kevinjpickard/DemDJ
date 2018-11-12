@@ -12,9 +12,9 @@ export GO111MODULE='on'
 To add a dependency, do the following anywhere in the project repo:
 ```
 go get <dependency>
-go mod vendor
+go mod verify
 ```
-`go get` will add the dependency to the `go.mod` file, and `go mod vendor` will add it to the `vendor` folder. This is done for compatibility. 
+`go get` will automatically add the dependency to the `go.mod` file. `go verify` updates the `go.mod` file, adding the new checksums. 
 
 ## Testing
 Test are run using the [Ginko Testing Framework](https://github.com/onsi/ginkgo). To run all tests, run:
